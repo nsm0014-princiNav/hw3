@@ -30,15 +30,15 @@
 
 
 \begin{questions}
-    \question{}
+    \question{How many muiltiplies and additions are needed for each of the following computations?}
     \begin{parts}
-        \part{}
+        \part{Composition of rotations via rotation matrices, $\mathbf{C}_2^1\mathbf{C}_1^0$}
 
-        \part{}
+        \part{Composition of rotations via quaternions, $\bar{q}_1^{\;2} \otimes \bar{q}_0^{\;1}$}
 
-        \part{}
+        \part{Recoordinatization of a vector via rotation matrix, $\mathbf{C}_2^1\vec{r}^{\;1}$}
 
-        \part{}
+        \part{Recoordinatization of a vector via quaternion, $\bar{q}_1^{\;2} \otimes \breve{r}^1 \otimes \left(\bar{q}_1^{\;2}\right)^{-1}$}
 
     \end{parts}
     \clearpage
@@ -50,37 +50,38 @@
         \end{figure*}
 
         The rotation matrices and displacements between frames are shown below.
+
         \centering
-        $\mathbf{C_1^0} =
+        $\mathbf{C}_1^0 =
             \begin{bmatrix}
-                c_1 & -s_1 & 0 \\
-                s_1 & c_1  & 0 \\
-                0   & 0    & 1 \\
+                cos(\theta_1) & -sin(\theta_1) & 0 \\
+                sin(\theta_1) & cos(\theta_1)  & 0 \\
+                0             & 0              & 1 \\
             \end{bmatrix}
-        $,\quad
+        $,
         $\vec{r}^{\;0}_{01} =
             \begin{bmatrix}
-                a_1c_1 \\
-                a_1s_1 \\
-                0      \\
+                a_1cos(\theta_1) \\
+                a_1sin(\theta_1) \\
+                0                \\
             \end{bmatrix}
-        $,\quad
-        $\mathbf{C_1^0} =
+        $,
+        $\mathbf{C}_1^0 =
             \begin{bmatrix}
-                c_2 & 0  & -s_2 \\
-                s_2 & 0  & c_2  \\
-                0   & -1 & 0    \\
+                cos(\theta_2) & 0  & -sin(\theta_2) \\
+                sin(\theta_2) & 0  & cos(\theta_2)  \\
+                0             & -1 & 0              \\
             \end{bmatrix}
-        $,\quad
+        $
+
+        \qquad \qquad \qquad \qquad \quad
         $\vec{r}^{\;1}_{12} =
             \begin{bmatrix}
                 0 \\
                 0 \\
                 0 \\
             \end{bmatrix}$
-
-        \qquad\qquad\qquad\qquad\qquad
-        $\mathbf{C_2^3} =
+        $\mathbf{C}_2^3 =
             \begin{bmatrix}
                 1 & 0 & 0  \\
                 0 & 0 & -1 \\
@@ -113,27 +114,57 @@
 
     \end{parts}
     \clearpage
-    \question{}
+    \question{Consider the time-varying coordinate transformation matrix $\mathbf{C}^{n}_{b}$ given below that describes the orientation of the body frame as it rotates with respect to the navigation frame.
+        \[\mathbf{C}^n_b =
+            \begin{bmatrix}
+                cos(t)  & sin(t)sin(t^2)  & sin(t)cos(t^2) \\
+                0       & cos(t^2)        & -sin(t^2)      \\
+                -sin(t) & cos(t) sin(t^2) & cos(t)cos(t^2) \\
+            \end{bmatrix} \]
+    }
     \begin{parts}
-        \part{}
+        \part{Compute expressions for $\psi$,$\theta$, and $\phi$ based on fixed-axis definition of roll, pitch, yaw assuming a 1,2,3 series of rotations (roll,pitch,yaw).}
 
-        \part{}
+        \part{Use MATLAB to plot $\psi$,$\theta$, and $\phi$ as a function of time.}
 
     \end{parts}
     \clearpage
-    \question{}
+    \question{Consider the time-varying coordinate transformation matrix $\mathbf{C}^n_b$ give below that describe the orientation of the body as it rotates with respect to the navigation frame.
+        \[\mathbf{C}^n_b =
+            \begin{bmatrix}
+                cos(t)  & sin(t)sin(t^2)  & sin(t)cos(t^2) \\
+                0       & cos(t^2)        & -sin(t^2)      \\
+                -sin(t) & cos(t) sin(t^2) & cos(t)cos(t^2) \\
+            \end{bmatrix} \]
+    }
     \begin{parts}
-        \part{}
+        \part{Determine the analytic form of the time-derivative of $\mathbf{C}^n_b$ (i.e. $\dot{\mathbf{C}}^n_b = \frac{d\mathbf{C}^n_b}{dt}$) via a term-by-term differentiation.}
 
-        \part{}
+        \part{Develop MATLAB functions which accept $t$ (i.e time) as a numerical input and return $\mathbf{C}^n_b$ and $\dot{\mathbf{C}}^n_b$, respectively, as numerical outputs.}
 
-        \part{}
+        \part{Using the $\mathbf{C}^n_b$ and $\dot{\mathbf{C}}^n_b$ functions from above, compute the angular velocity vector $\vec{\omega}^{\;n}_{nb}$ at time $t = 0$ seconds. (HINT: You might want to compute $\tilde{\omega}^{n}_{nb}$)}
+        \begin{subparts}
+            \subpart{What is the magnitude (i.e. $\dot{\theta}$,angular speed) of the angular velocity?}
 
-        \part{}
+            \subpart{About what unit vector ($\vec{k}^{\;n}_{nb}$) has the instantaneous rotation occurred?}
+        \end{subparts}
 
-        \part{}
+        \part{Using the $\mathbf{C}^n_b$ and $\dot{\mathbf{C}}^n_b$ functions from above, compute the angular velocity vector $\vec{\omega}^{\;n}_{nb}$ at time $t = 0.5$ seconds.}
+        \begin{subparts}
+            \subpart{What is the magnitude (i.e. $\dot{\theta}$,angular speed) of the angular velocity?}
 
-        \part{}
+            \subpart{About what unit vector ($\vec{k}^{\;n}_{nb}$) has the instantaneous rotation occurred?}
+        \end{subparts}
+        \part{Using the $\mathbf{C}^n_b$ and $\dot{\mathbf{C}}^n_b$ functions from above, compute the angular velocity vector $\vec{\omega}^{\;n}_{nb}$ at time $t = 1$ seconds.}
+        \begin{subparts}
+            \subpart{What is the magnitude (i.e. $\dot{\theta}$,angular speed) of the angular velocity?}
+
+            \subpart{About what unit vector ($\vec{k}^{\;n}_{nb}$) has the instantaneous rotation occurred?}
+        \end{subparts}
+
+        \part{In practice, direct measurement of the angular velocity vector $\vec{\omega}^{\;n}_{nb}$ can prove challenging, so a finite-difference approach may be taken given two sequential orientations represented by $\mathbf{C}^n_b(t)$ and $\mathbf{C}^n_b(t + \Delta t)$ a small time $\Delta t$ apart. Consider the approximate value of the angular velocity vector $\vec{\omega}^{\;n}_{nb}$ derived by using the finite difference
+            \[\dot{\mathbf{C}}^n_b(t) \approx \frac{\mathbf{C}^n_b(t + \Delta t) - \mathbf{C}^n_b(t)}{\Delta t} \]
+            at times $t = 0$,$0.5$, and $1$ second. Compare the "analytic" values for $\dot{\theta}$ and $\vec{k}^{\;n}_{nb}$ (found in parts \ref{part@4@2}, \ref{part@4@3}, and \ref{part@4@4}) with your approximations from the finite difference using $\Delta t = 0.1$ seconds. How large are the errors?}
     \end{parts}
     \clearpage
     \question{}
