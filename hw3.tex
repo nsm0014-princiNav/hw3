@@ -167,17 +167,24 @@
             at times $t = 0$,$0.5$, and $1$ second. Compare the "analytic" values for $\dot{\theta}$ and $\vec{k}^{\;n}_{nb}$ (found in parts \ref{part@4@2}, \ref{part@4@3}, and \ref{part@4@4}) with your approximations from the finite difference using $\Delta t = 0.1$ seconds. How large are the errors?}
     \end{parts}
     \clearpage
-    \question{}
+    \question{Given the geodetic coordinate of the peak of Mt. Everest as Latitude ($L_b$) $27^o\;59'\;16"$ N, Longitude ($\lambda_b$) $86^o\;56'\;40"$ E, and height ($h_b$) 8850 meters (derived by GPS in 1999):}
     \begin{parts}
-        \part{}
+        \part{Develop a MATLAB function \[\text{function}\;\; r^e_{eb} = \text{llh2xyz}(L_b,\lambda_b,h_b) \]
+        to convert from geodetic curvilinear Latitude, Longitude, and height to ECEF rectangular $x$,$y$, and $z$ coordinates (Please use SI units). Attach a printout of your function.}
+        \begin{subparts}
+            \subpart{Test your llh2xyz function using coordinates of the peak of Mt. Everest. What is $\vec{r}^{\;e}_{eb}$}
+        \end{subparts}
 
-        \part{}
+        \part{Develop a MATLAB function \[\text{function}\;\;\left[L_b,\lambda_b,h_b\right]  = \text{xyz2llh}(r^e_{eb}) \]
+            to convert from ECEF rectangular $x$,$y$, and $z$ coordinates to geodetic curvilinear Latitude, Longitude, and height (Please use SI units). Attach a printout of your function.
 
-        \part{}
+            HINT: This should be an interactive transformation (i.e. not closed form).}
 
-        \part{}
+        \part{What is the acceleration due to gravity at the ellipsoid (i.e. at the ellipsoid $h_b = 0$. HINT: This should only be a function of Latitude -- see attached Pages)?}
 
-        \part{}
+        \part{What is the magnitude of the centrifugal acceleration ($-\tilde{\omega}^{e}_{ie}\,\tilde{\omega}^{e}_{ie}\,\vec{r}^{\;e_{eb}}$) at the ellipsoid and at the peak?}
+
+        \part{What is the magnitude of the gravitational attraction at the ellipsoid and at the peak? HINT: See \textbf{attached pages} to compute $\vec{\gamma}^{\;e}_{ib} = \vec{\gamma}^{\;i}_{eb\vert ib} \quad \vec{r}^{\;i}_{ib} = \vec{r}^{\;e}_{eb}$}
     \end{parts}
 \end{questions}
 
