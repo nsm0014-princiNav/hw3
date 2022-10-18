@@ -125,7 +125,28 @@
     \begin{parts}
         \part{Compute expressions for $\psi$,$\theta$, and $\phi$ based on fixed-axis definition of roll, pitch, yaw assuming a 1,2,3 series of rotations (roll,pitch,yaw).}
 
+        \solution{%
+            From class, we determined the Euler angles to be
+            \begin{equation}
+                \begin{split}
+                    \phi & = tan^{-1}\left(\frac{-C_{23}}{C_{33}}\right) \\
+                    \theta & = sin^{-1}(-C_{13})\\
+                    \psi & = tan^{-1}\left(\frac{-C_{12}}{C_{11}}\right)\\
+                \end{split}
+                \label{eulerAngles}
+            \end{equation}
+        }
+
         \part{Use MATLAB to plot $\psi$,$\theta$, and $\phi$ as a function of time.}
+
+        The simulation was run for 10 seconds with a sampling rate of 100 Hertz.
+
+        \begin{figure}[!h]
+            \centering
+            \includegraphics[width=0.8\linewidth]{Euler_Angles.png}
+            \caption{Roll, Pitch, and Yaw angles plotted as a function of time.}
+            \label{fig:euler}
+        \end{figure}
 
     \end{parts}
     \clearpage
@@ -139,6 +160,8 @@
     }
     \begin{parts}
         \part{Determine the analytic form of the time-derivative of $\mathbf{C}^n_b$ (i.e. $\dot{\mathbf{C}}^n_b = \frac{d\mathbf{C}^n_b}{dt}$) via a term-by-term differentiation.}
+
+
 
         \part{Develop MATLAB functions which accept $t$ (i.e time) as a numerical input and return $\mathbf{C}^n_b$ and $\dot{\mathbf{C}}^n_b$, respectively, as numerical outputs.}
 
