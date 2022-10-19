@@ -12,7 +12,7 @@ for i = 1:length(t)
         -sin(t(i)) cos(t(i))*sin(t(i)^2) cos(t(i))*cos(t(i)^2)];
 
     phi(i) = atan2d(-C(2,3),C(3,3));
-    theta(i) = atan2d((-C(1,3)),(sqrt(C(2,3)^2 + C(3,3)^2)));
+    theta(i) = asind(-C(1,3));
     psi(i) = atan2d(-C(1,2),C(1,1));
 end
 
