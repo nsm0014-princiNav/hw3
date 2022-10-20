@@ -34,12 +34,131 @@
     \begin{parts}
         \part{Composition of rotations via rotation matrices, $\mathbf{C}_2^1\mathbf{C}_1^0$}
 
+        \solution{%
+            If we understand the rotation matrices to be in their most fundamental form, we can determine the number of multiplications and additions need to solve for $\mathbf{C}^0_2$. We start by defining both $\mathbf{C}_2^1$ and $\mathbf{C}_1^0$ which is a set of dot products between the respective frames.
+
+            \begin{equation}
+                \begin{split}
+                    \mathbf{C}_2^1 & =
+                    \begin{bmatrix}
+                        x_2 \cdot x_1 & y_2 \cdot x_1 & z_2 \cdot x_1 \\
+                        x_2 \cdot y_1 & y_2 \cdot y_1 & z_2 \cdot y_1 \\
+                        x_2 \cdot z_1 & y_2 \cdot z_1 & z_2 \cdot z_1 \\
+                    \end{bmatrix}
+                \end{split}
+                \label{eq:1}
+            \end{equation}
+
+            \begin{equation}
+                \begin{split}
+                    \mathbf{C}_1^0 & =
+                    \begin{bmatrix}
+                        x_1 \cdot x_0 & y_1 \cdot x_0 & z_1 \cdot x_0 \\
+                        x_1 \cdot y_0 & y_1 \cdot y_0 & z_1 \cdot y_0 \\
+                        x_1 \cdot z_0 & y_1 \cdot z_0 & z_1 \cdot z_0 \\
+                    \end{bmatrix}
+                \end{split}
+                \label{eq:2}
+            \end{equation}
+
+            Defining these two rotations matrices we see that there 9 multiplications for each, so we add those to our running tally.
+            Next, we multiply these together, which is a combination of multiplication and addition.
+            \begin{equation}
+                \begin{split}
+                    \mathbf{C}_2^1\mathbf{C}_1^0 & =
+                    \begin{bmatrix}
+                        x_2 \cdot x_1 & y_2 \cdot x_1 & z_2 \cdot x_1 \\
+                        x_2 \cdot y_1 & y_2 \cdot y_1 & z_2 \cdot y_1 \\
+                        x_2 \cdot z_1 & y_2 \cdot z_1 & z_2 \cdot z_1 \\
+                    \end{bmatrix}
+                    \begin{bmatrix}
+                        x_1 \cdot x_0 & y_1 \cdot x_0 & z_1 \cdot x_0 \\
+                        x_1 \cdot y_0 & y_1 \cdot y_0 & z_1 \cdot y_0 \\
+                        x_1 \cdot z_0 & y_1 \cdot z_0 & z_1 \cdot z_0 \\
+                    \end{bmatrix} \\
+                    \mathbf{C}_2^1\mathbf{C}_1^0 (:,1) & =
+                    \begin{bmatrix}
+                        \mathbf{C}_2^1(1,1)\mathbf{C}_1^0(1,1) + \mathbf{C}_2^1(1,2)\mathbf{C}_1^0(2,1) + \mathbf{C}_2^1(1,3)\mathbf{C}_1^0(3,1) \\
+                        \mathbf{C}_2^1(2,1)\mathbf{C}_1^0(1,1) + \mathbf{C}_2^1(2,2)\mathbf{C}_1^0(2,1) + \mathbf{C}_2^1(2,3)\mathbf{C}_1^0(3,1) \\
+                        \mathbf{C}_2^1(3,1)\mathbf{C}_1^0(1,1) + \mathbf{C}_2^1(3,2)\mathbf{C}_1^0(2,1) + \mathbf{C}_2^1(3,3)\mathbf{C}_1^0(3,1) \\
+                    \end{bmatrix}
+                \end{split}
+                \label{eq:3}
+            \end{equation}
+
+            For the first column of matrix multiplication, there are 9 multiplications and 6 additions. We can triple this to account for the other two columns to add to our running tally.
+
+            Adding our running total together, for part \ref{part@1@1}, we see there is 45 multiplications and 18 additions.
+        }
+
         \part{Composition of rotations via quaternions, $\bar{q}_1^{\;2} \otimes \bar{q}_0^{\;1}$}
+
+        \solution{%
+            Counting the number of multiplications and additions of the tensor product between two quaternions is done easily if we layout the multiplication in its fundamental form.
+            \begin{equation}
+                \begin{split}
+                    \bar{q}_1^{\;2} \otimes \bar{q}_0^{\;1} & =
+                    \begin{bmatrix}
+                        q_1^{2}(1) & -q_1^{2}(2) & -q_1^{2}(3) & -q_1^{2}(4) \\
+                        q_1^{2}(2) & q_1^{2}(1)  & -q_1^{2}(4) & q_1^{2}(3)  \\
+                        q_1^{2}(3) & q_1^{2}(4)  & q_1^{2}(1)  & q_1^{2}(2)  \\
+                        q_1^{2}(4) & -q_1^{2}(3) & -q_1^{2}(2) & q_1^{2}(1)  \\
+                    \end{bmatrix}
+                    \begin{bmatrix}
+                        q_0^{1}(1) \\
+                        q_0^{1}(2) \\
+                        q_0^{1}(3) \\
+                        q_0^{1}(4) \\
+                    \end{bmatrix}\\
+                    \bar{q}_1^{\;2} \otimes \bar{q}_0^{\;1} & =
+                    \begin{bmatrix}
+                        q_1^{2}(1)q_0^{1}(1) + -q_1^{2}(2)q_0^{1}(2) + -q_1^{2}(3)q_0^{1}(3) + -q_1^{2}(4)q_0^{1}(4) \\
+                        q_1^{2}(2)q_0^{1}(1) + q_1^{2}(1)q_0^{1}(2) + -q_1^{2}(4)q_0^{1}(3) + q_1^{2}(3)q_0^{1}(4)   \\
+                        q_1^{2}(3)q_0^{1}(1) + q_1^{2}(4)q_0^{1}(2) + q_1^{2}(1)q_0^{1}(3) + q_1^{2}(2)q_0^{1}(4)    \\
+                        q_1^{2}(4)q_0^{1}(1) + -q_1^{2}(3)q_0^{1}(2) + -q_1^{2}(2)q_0^{1}(3) + q_1^{2}(1)q_0^{1}(4)  \\
+                    \end{bmatrix}
+                \end{split}
+                \label{eq:4}
+            \end{equation}
+
+            From here, we see a total of 16 multiplications and 12 additions.
+        }
 
         \part{Recoordinatization of a vector via rotation matrix, $\mathbf{C}_2^1\vec{r}^{\;1}$}
 
+        \solution{%
+            From part \ref{part@1@1} we know the formation of $\mathbf{C}_2^1$ contains 9 multiplications. So now we just have to count the number of multiplications and additions that occur when evaluating $\mathbf{C}_2^1\vec{r}^{\;1}$.
+
+            \begin{equation}
+                \begin{split}
+                    \mathbf{C}_2^1\vec{r}^{\;1} & =
+                    \begin{bmatrix}
+                        x_2 \cdot x_1 & y_2 \cdot x_1 & z_2 \cdot x_1 \\
+                        x_2 \cdot y_1 & y_2 \cdot y_1 & z_2 \cdot y_1 \\
+                        x_2 \cdot z_1 & y_2 \cdot z_1 & z_2 \cdot z_1 \\
+                    \end{bmatrix}
+                    \begin{bmatrix}
+                        r_x^1 \\
+                        r_y^1 \\
+                        r_z^1 \\
+                    \end{bmatrix}\\
+                    \mathbf{C}_2^1\vec{r}^{\;1} & =
+                    \begin{bmatrix}
+                        \mathbf{C}_2^1(1,1)r_x^1 + \mathbf{C}_2^1(1,2)r_y^1 + \mathbf{C}_2^1(1,3)r_z^1 \\
+                        \mathbf{C}_2^1(2,1)r_x^1 + \mathbf{C}_2^1(2,2)r_y^1 + \mathbf{C}_2^1(2,3)r_z^1 \\
+                        \mathbf{C}_2^1(3,1)r_x^1 + \mathbf{C}_2^1(3,2)r_y^1 + \mathbf{C}_2^1(3,3)r_z^1 \\
+                    \end{bmatrix}\\
+                \end{split}
+                \label{eq:5}
+            \end{equation}
+            From Equation \ref{eq:5} we see a total of 6 additions and 18 multiplications.
+        }
+
         \part{Recoordinatization of a vector via quaternion, $\bar{q}_1^{\;2} \otimes \breve{r}^1 \otimes \left(\bar{q}_1^{\;2}\right)^{-1}$}
 
+        \solution{%
+        To evaluate the recoordinatization of a vector with quaternions, $\bar{q}_1^{\;2} \otimes \breve{r}^1 \otimes \left(\bar{q}_1^{\;2}\right)^{-1}$, we should be able to double the amount of multiplications and additions seen from part \ref{part@1@2}. Doing this, we see that two tensor products require 32 multiplications and 24 additions.
+        }
     \end{parts}
     \clearpage
     \question{Consider the three-link, planar robot shown below for which four coordinate frames have been assigned. Frame $\{0\}$ is fixed, frame $\{1\}$ rotates with angle $\theta_1$ relative to Frame $\{0\}$, frame $\{2\}$ rotates with $\theta_2$ relative to frame $\{1\}$, and frame $\{3\}$ translates with distance $d_3$ relative to frame $\{2\}$.
