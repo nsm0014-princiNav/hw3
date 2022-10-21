@@ -161,148 +161,275 @@
         }
     \end{parts}
     \clearpage
-\question{Consider the three-link, planar robot shown below for which four coordinate frames have been assigned. Frame $\{0\}$ is fixed, frame $\{1\}$ rotates with angle $\theta_1$ relative to Frame $\{0\}$, frame $\{2\}$ rotates with $\theta_2$ relative to frame $\{1\}$, and frame $\{3\}$ translates with distance $d_3$ relative to frame $\{2\}$.
+    \question{Consider the three-link, planar robot shown below for which four coordinate frames have been assigned. Frame $\{0\}$ is fixed, frame $\{1\}$ rotates with angle $\theta_1$ relative to Frame $\{0\}$, frame $\{2\}$ rotates with $\theta_2$ relative to frame $\{1\}$, and frame $\{3\}$ translates with distance $d_3$ relative to frame $\{2\}$.
 
-    \begin{figure*}[!h]
+        \begin{figure*}[!h]
+            \centering
+            \includegraphics[width=0.5\linewidth]{Q2ps.png}
+        \end{figure*}
+
+
+        The rotation matrices and displacements between frames are shown below.
+
         \centering
-        \includegraphics[width=0.5\linewidth]{Q2ps.png}
-    \end{figure*}
+        $\mathbf{C}_1^0 =
+            \begin{bmatrix}
+                cos(\theta_1) & -sin(\theta_1) & 0 \\
+                sin(\theta_1) & cos(\theta_1)  & 0 \\
+                0             & 0              & 1 \\
+            \end{bmatrix}
+        $,
+        $\vec{r}^{\;0}_{01} =
+            \begin{bmatrix}
+                a_1cos(\theta_1) \\
+                a_1sin(\theta_1) \\
+                0                \\
+            \end{bmatrix}
+        $,
+        $\mathbf{C}_2^1 =
+            \begin{bmatrix}
+                cos(\theta_2) & 0  & -sin(\theta_2) \\
+                sin(\theta_2) & 0  & cos(\theta_2)  \\
+                0             & -1 & 0              \\
+            \end{bmatrix}
+        $
 
-
-    The rotation matrices and displacements between frames are shown below.
-
-    \centering
-    $\mathbf{C}_1^0 =
-        \begin{bmatrix}
-            cos(\theta_1) & -sin(\theta_1) & 0 \\
-            sin(\theta_1) & cos(\theta_1)  & 0 \\
-            0             & 0              & 1 \\
-        \end{bmatrix}
-    $,
-    $\vec{r}^{\;0}_{01} =
-        \begin{bmatrix}
-            a_1cos(\theta_1) \\
-            a_1sin(\theta_1) \\
-            0                \\
-        \end{bmatrix}
-    $,
-    $\mathbf{C}_2^1 =
-        \begin{bmatrix}
-            cos(\theta_2) & 0  & -sin(\theta_2) \\
-            sin(\theta_2) & 0  & cos(\theta_2)  \\
-            0             & -1 & 0              \\
-        \end{bmatrix}
-    $
-
-    \qquad \qquad \qquad \qquad \quad
-    $\vec{r}^{\;1}_{12} =
-        \begin{bmatrix}
-            0 \\
-            0 \\
-            0 \\
-        \end{bmatrix}$
-    $\mathbf{C}_2^3 =
-        \begin{bmatrix}
-            1 & 0 & 0  \\
-            0 & 0 & -1 \\
-            0 & 1 & 0  \\
-        \end{bmatrix}
-    $,\quad
-    $\vec{r}^{\;2}_{23} =
-        \begin{bmatrix}
-            0   \\
-            0   \\
-            d_3 \\
-        \end{bmatrix}
-    $
-}
-\begin{parts}
-    \part{Determine the rotation matrix $\mathbf{C}_3^0$.}
-
-    \solution{%
-        Determining $\mathbf{C}_3^0$ can be done by multiplying the 3 given rotation matrices in a specific order to reflect the angular relationships between frame \{0\} and frame \{3\}.
-
-        \begin{equation}
-            \begin{split}
-                \mathbf{C}_3^0 & = \mathbf{C}_1^0 \mathbf{C}_2^1 \mathbf{C}_3^2\\
-                \mathbf{C}_3^0 & =
-                \begin{bmatrix}
-                    cos(\theta_1) & -sin(\theta_1) & 0 \\
-                    sin(\theta_1) & cos(\theta_1)  & 0 \\
-                    0             & 0              & 1 \\
-                \end{bmatrix}
-                \begin{bmatrix}
-                    cos(\theta_2) & 0  & -sin(\theta_2) \\
-                    sin(\theta_2) & 0  & cos(\theta_2)  \\
-                    0             & -1 & 0              \\
-                \end{bmatrix}
-                \begin{bmatrix}
-                    1 & 0 & 0  \\
-                    0 & 0 & -1 \\
-                    0 & 1 & 0  \\
-                \end{bmatrix}\\
-                \mathbf{C}_3^0 & =
-                \begin{bmatrix}
-                    cos(\theta_1) & -sin(\theta_1) & 0 \\
-                    sin(\theta_1) & cos(\theta_1)  & 0 \\
-                    0             & 0              & 1 \\
-                \end{bmatrix}
-                \begin{bmatrix}
-                    cos(\theta_2) & -sin(\theta_2) & 0 \\
-                    sin(\theta_2) & cos(\theta_2)  & 0 \\
-                    0             & 0              & 1 \\
-                \end{bmatrix} \\
-                \mathbf{C}_3^0 & =
-                \begin{bmatrix}
-                    c\theta_1c\theta_2 - s\theta_1s\theta_2 & -\left(c\theta_1s\theta_2 + c\theta_2s\theta_1\right) & 0 \\
-                    c\theta_1s\theta_2 + c\theta_2s\theta_1 & c\theta_1c\theta_2 - s\theta_1s\theta_2               & 0 \\
-                    0                                       & 0                                                     & 1 \\
-                \end{bmatrix}
-            \end{split}
-            \label{}
-        \end{equation}
+        \qquad \qquad \qquad \qquad \quad
+        $\vec{r}^{\;1}_{12} =
+            \begin{bmatrix}
+                0 \\
+                0 \\
+                0 \\
+            \end{bmatrix}$
+        $\mathbf{C}_2^3 =
+            \begin{bmatrix}
+                1 & 0 & 0  \\
+                0 & 0 & -1 \\
+                0 & 1 & 0  \\
+            \end{bmatrix}
+        $,\quad
+        $\vec{r}^{\;2}_{23} =
+            \begin{bmatrix}
+                0   \\
+                0   \\
+                d_3 \\
+            \end{bmatrix}
+        $
     }
-    \part{Determine the translation vector $\vec{r}^{\;0}_{03}$}
-
-    \solution{%
-        From class we learned that vectors must be in the same frame to add them together. We can do this by using rotation matrices to transform the vectors to the same frame.
-
-        \begin{equation}
-            \begin{split}
-                \vec{r}^{\;0}_{03} & = \vec{r}^{\;0}_{01} + \mathbf{C}_1^0 \vec{r}^{\;1}_{12} + \mathbf{C}_1^0 \mathbf{C}_2^1 \vec{r}^{\;2}_{23}\\
-                \vec{r}^{\;0}_{03} & = \left[\begin{array}{c} a_{1}\,\cos\left(\theta_1\right)-d_{3}\,\left(\cos\left(\theta_1\right)\,\sin\left(\theta_2\right)+\cos\left(\theta_2\right)\,\sin\left(\theta_1\right)\right)\\ d_{3}\,\left(\cos\left(\theta_1\right)\,\cos\left(\theta_2\right)-\sin\left(\theta_1\right)\,\sin\left(\theta_2\right)\right)+a_{1}\,\sin\left(\theta_1\right)\\ 0 \end{array}\right]\\
-            \end{split}
-            \label{eq:7}
-        \end{equation}
-    }
-
-    \part{Determine the following angular velocities as skew-symmetric matrices $\tilde{\omega}$ and vectors $\vec{\omega}$. Note $\theta_1$,$\theta_2$, and $d_3$ can vary with time.}
-    \begin{subparts}
-        \subpart{$\tilde{\omega}^0_{01}$, $\vec{\omega}^0_{01}$}
+    \begin{parts}
+        \part{Determine the rotation matrix $\mathbf{C}_3^0$.}
 
         \solution{%
-        \[\tilde{\omega}^0_{01} = \left[\begin{array}{ccc} 0 & -\dot{\theta}_1 & 0\\ \dot{\theta}_1 & 0 & 0\\ 0 & 0 & 0 \end{array}\right]\]
-        \[\vec{\omega}^0_{01} = \begin{bmatrix}
-                0              \\
-                0              \\
-                \dot{\theta}_1 \\
-            \end{bmatrix} \]
+            Determining $\mathbf{C}_3^0$ can be done by multiplying the 3 given rotation matrices in a specific order to reflect the angular relationships between frame \{0\} and frame \{3\}.
+
+            \begin{equation}
+                \begin{split}
+                    \mathbf{C}_3^0 & = \mathbf{C}_1^0 \mathbf{C}_2^1 \mathbf{C}_3^2\\
+                    \mathbf{C}_3^0 & =
+                    \begin{bmatrix}
+                        cos(\theta_1) & -sin(\theta_1) & 0 \\
+                        sin(\theta_1) & cos(\theta_1)  & 0 \\
+                        0             & 0              & 1 \\
+                    \end{bmatrix}
+                    \begin{bmatrix}
+                        cos(\theta_2) & 0  & -sin(\theta_2) \\
+                        sin(\theta_2) & 0  & cos(\theta_2)  \\
+                        0             & -1 & 0              \\
+                    \end{bmatrix}
+                    \begin{bmatrix}
+                        1 & 0 & 0  \\
+                        0 & 0 & -1 \\
+                        0 & 1 & 0  \\
+                    \end{bmatrix}\\
+                    \mathbf{C}_3^0 & =
+                    \begin{bmatrix}
+                        cos(\theta_1) & -sin(\theta_1) & 0 \\
+                        sin(\theta_1) & cos(\theta_1)  & 0 \\
+                        0             & 0              & 1 \\
+                    \end{bmatrix}
+                    \begin{bmatrix}
+                        cos(\theta_2) & -sin(\theta_2) & 0 \\
+                        sin(\theta_2) & cos(\theta_2)  & 0 \\
+                        0             & 0              & 1 \\
+                    \end{bmatrix} \\
+                    \mathbf{C}_3^0 & =
+                    \begin{bmatrix}
+                        c\theta_1c\theta_2 - s\theta_1s\theta_2 & -\left(c\theta_1s\theta_2 + c\theta_2s\theta_1\right) & 0 \\
+                        c\theta_1s\theta_2 + c\theta_2s\theta_1 & c\theta_1c\theta_2 - s\theta_1s\theta_2               & 0 \\
+                        0                                       & 0                                                     & 1 \\
+                    \end{bmatrix}
+                \end{split}
+                \label{}
+            \end{equation}
         }
-        \subpart{$\tilde{\omega}^1_{12}$, $\vec{\omega}^1_{12}$}
+        \part{Determine the translation vector $\vec{r}^{\;0}_{03}$}
 
         \solution{%
-        \[\tilde{\omega}^1_{12} = \left[\begin{array}{ccc} 0 & -\dot{\theta}_2 & 0\\ \dot{\theta}_2 & 0 & 0\\ 0 & 0 & 0 \end{array}\right]\]
-        \[\vec{\omega}^1_{12} = \begin{bmatrix}
-                0              \\
-                0              \\
-                \dot{\theta}_2 \\
-            \end{bmatrix} \]}
-        \subpart{$\tilde{\omega}^2_{23}$, $\vec{\omega}^2_{23}$}
+            From class we learned that vectors must be in the same frame to add them together. We can do this by using rotation matrices to transform the vectors to the same frame.
 
-        \subpart{$\tilde{\omega}^0_{03}$, $\vec{\omega}^0_{03}$}
-    \end{subparts}
+            \begin{equation}
+                \begin{split}
+                    \vec{r}^{\;0}_{03} & = \vec{r}^{\;0}_{01} + \mathbf{C}_1^0 \vec{r}^{\;1}_{12} + \mathbf{C}_1^0 \mathbf{C}_2^1 \vec{r}^{\;2}_{23}\\
+                    \vec{r}^{\;0}_{03} & = \left[\begin{array}{c} a_{1}\,\cos\left(\theta_1\right)-d_{3}\,\left(\cos\left(\theta_1\right)\,\sin\left(\theta_2\right)+\cos\left(\theta_2\right)\,\sin\left(\theta_1\right)\right)\\ d_{3}\,\left(\cos\left(\theta_1\right)\,\cos\left(\theta_2\right)-\sin\left(\theta_1\right)\,\sin\left(\theta_2\right)\right)+a_{1}\,\sin\left(\theta_1\right)\\ 0 \end{array}\right]\\
+                \end{split}
+                \label{eq:7}
+            \end{equation}
+        }
 
-\end{parts}
+        \part{Determine the following angular velocities as skew-symmetric matrices $\tilde{\omega}$ and vectors $\vec{\omega}$. Note $\theta_1$,$\theta_2$, and $d_3$ can vary with time.}
+        \begin{subparts}
+            \subpart{$\tilde{\omega}^0_{01}$, $\vec{\omega}^0_{01}$}
+
+            \solution{%
+            \begin{equation}
+                \begin{split}
+                    \tilde{\omega}^0_{01} & = \dot{\mathbf{C}}_1^0\left(\mathbf{C}_1^0\right)^{-1}\\
+                    \tilde{\omega}^0_{01} & =
+                    \begin{bmatrix}
+                        -\dot{\theta_1}\sin\theta_1 & -\dot{\theta_1}\cos\theta_1 & 0 \\
+                        \dot{\theta_1}\cos\theta_1  & -\dot{\theta_1}\sin\theta_1 & 0 \\
+                        0                           & 0                           & 0 \\
+                    \end{bmatrix}
+                    \left(
+                    \begin{bmatrix}
+                        cos(\theta_1) & -sin(\theta_1) & 0 \\
+                        sin(\theta_1) & cos(\theta_1)  & 0 \\
+                        0             & 0              & 1 \\
+                    \end{bmatrix}
+                    \right)^{-1}\\
+                \end{split}
+                \label{}
+            \end{equation}
+            \[\tilde{\omega}^0_{01} = \left[\begin{array}{ccc} 0 & -\dot{\theta}_1 & 0\\ \dot{\theta}_1 & 0 & 0\\ 0 & 0 & 0 \end{array}\right]\]
+            \[\vec{\omega}^0_{01} = \begin{bmatrix}
+                    0              \\
+                    0              \\
+                    \dot{\theta}_1 \\
+                \end{bmatrix} \]
+            }
+            \subpart{$\tilde{\omega}^1_{12}$, $\vec{\omega}^1_{12}$}
+
+            \solution{%
+            \begin{equation}
+                \begin{split}
+                    \tilde{\omega}^1_{12} & = \dot{\mathbf{C}}_2^1\left(\mathbf{C}_2^1\right)^{-1}\\
+                    \tilde{\omega}^1_{12} & =
+                    \begin{bmatrix}
+                        -\dot{\theta_2}\sin\theta_2 & 0 & -\dot{\theta_2}\cos\theta_2 \\
+                        \dot{\theta_2}\cos\theta_2  & 0 & -\dot{\theta_2}\sin\theta_2 \\
+                        0                           & 0 & 0                           \\
+                    \end{bmatrix}
+                    \left(
+                    \begin{bmatrix}
+                        cos(\theta_2) & 0  & -sin(\theta_2) \\
+                        sin(\theta_2) & 0  & cos(\theta_2)  \\
+                        0             & -1 & 0              \\
+                    \end{bmatrix}
+                    \right)^{-1}\\
+                \end{split}
+                \label{}
+            \end{equation}
+            \[\tilde{\omega}^1_{12} = \left[\begin{array}{ccc} 0 & -\dot{\theta}_2 & 0\\ \dot{\theta}_2 & 0 & 0\\ 0 & 0 & 0 \end{array}\right]\]
+            \[\vec{\omega}^1_{12} = \begin{bmatrix}
+                    0              \\
+                    0              \\
+                    \dot{\theta}_2 \\
+                \end{bmatrix} \]}
+            \subpart{$\tilde{\omega}^2_{23}$, $\vec{\omega}^2_{23}$}
+
+            \solution{%
+            Using Equation \ref{eq:6}, we can find $\tilde{\omega}^2_{23}$ and then transform it to $\vec{\omega}^2_{23}$.
+            \begin{equation}
+                \begin{split}
+                    \tilde{\omega}^2_{23} & = \dot{\mathbf{C}}_2^3 \left(\mathbf{C}_2^3\right)^{-1}\\
+                    \tilde{\omega}^2_{23} & =
+                    \begin{bmatrix}
+                        0 & 0 & 0 \\
+                        0 & 0 & 0 \\
+                        0 & 0 & 0 \\
+                    \end{bmatrix}\left(
+                    \begin{bmatrix}
+                        1 & 0  & 0 \\
+                        0 & 0  & 1 \\
+                        0 & -1 & 0 \\
+                    \end{bmatrix}\right)^{-1}\\
+                    \tilde{\omega}^2_{23} & =
+                    \begin{bmatrix}
+                        0 & 0 & 0 \\
+                        0 & 0 & 0 \\
+                        0 & 0 & 0 \\
+                    \end{bmatrix}\\
+                    \vec{\omega}^2_{23} & =
+                    \begin{bmatrix}
+                        0 \\
+                        0 \\
+                        0 \\
+                    \end{bmatrix}\\
+                \end{split}
+                \label{eq:6}
+            \end{equation}
+            }
+
+            \subpart{$\tilde{\omega}^0_{03}$, $\vec{\omega}^0_{03}$}
+
+            \solution{%
+                Just like adding position vectors together ($\mathbf{r_{03}^0}$), angular rates to be added together must be in the same frame. We can do this setting up the fundamental equation of the angular rates for each frame and then deriving each one to get our final answer.
+
+                \begin{equation}
+                    \begin{split}
+                        \tilde{\omega}^0_{03} & = \tilde{\omega}^0_{01} + \tilde{\omega}^0_{12} + \tilde{\omega}^0_{23}\\
+                        \tilde{\omega}^0_{03} & = \tilde{\omega}^0_{01} + \mathbf{C}^0_1\tilde{\omega}^1_{12} + \mathbf{C}^0_1\mathbf{C}^1_2\tilde{\omega}^2_{23}\\
+                        \tilde{\omega}^0_{03} & =
+                        \begin{bmatrix}
+                            0              & -\dot{\theta}_1 & 0 \\
+                            \dot{\theta}_1 & 0               & 0 \\
+                            0              & 0               & 0 \\
+                        \end{bmatrix} +
+                        \begin{bmatrix}
+                            cos(\theta_1) & -sin(\theta_1) & 0 \\
+                            sin(\theta_1) & cos(\theta_1)  & 0 \\
+                            0             & 0              & 1 \\
+                        \end{bmatrix}
+                        \begin{bmatrix}
+                            0              & -\dot{\theta}_2 & 0 \\
+                            \dot{\theta}_2 & 0               & 0 \\
+                            0              & 0               & 0 \\
+                        \end{bmatrix}\\
+                        + &
+                        \begin{bmatrix}
+                            cos(\theta_1) & -sin(\theta_1) & 0 \\
+                            sin(\theta_1) & cos(\theta_1)  & 0 \\
+                            0             & 0              & 1 \\
+                        \end{bmatrix}
+                        \begin{bmatrix}
+                            cos(\theta_2) & 0  & -sin(\theta_2) \\
+                            sin(\theta_2) & 0  & cos(\theta_2)  \\
+                            0             & -1 & 0              \\
+                        \end{bmatrix}
+                        \begin{bmatrix}
+                            0 & 0 & 0 \\
+                            0 & 0 & 0 \\
+                            0 & 0 & 0 \\
+                        \end{bmatrix}\\
+                        \tilde{\omega}^0_{03} & =
+                        \begin{bmatrix}
+                            0                     & -(\theta_1 + \theta_2) & 0 \\
+                            (\theta_1 + \theta_2) & 0                      & 0 \\
+                            0                     & 0                      & 0 \\
+                        \end{bmatrix}\\
+                        \vec{\omega}^0_{03} & =
+                        \begin{bmatrix}
+                            0                     \\
+                            0                     \\
+                            (\theta_1 + \theta_2) \\
+                        \end{bmatrix}\\
+                    \end{split}
+                    \label{}
+                \end{equation}
+            }
+        \end{subparts}
+
+    \end{parts}
     \clearpage
     \question{Consider the time-varying coordinate transformation matrix $\mathbf{C}^{n}_{b}$ given below that describes the orientation of the body frame as it rotates with respect to the navigation frame.
         \[\mathbf{C}^n_b =
