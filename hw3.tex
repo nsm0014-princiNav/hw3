@@ -565,21 +565,76 @@
         \end{subparts}
 
         \part{Using the $\mathbf{C}^n_b$ and $\dot{\mathbf{C}}^n_b$ functions from above, compute the angular velocity vector $\vec{\omega}^{\;n}_{nb}$ at time $t = 0.5$ seconds.}
+        \[\vec{\omega}^{\;n}_{nb}\vert_{(t = 0.5)}  =
+            \begin{bmatrix}
+                0.8776  \\
+                1       \\
+                -0.4794 \\
+            \end{bmatrix} \]
         \begin{subparts}
             \subpart{What is the magnitude (i.e. $\dot{\theta}$,angular speed) of the angular velocity?}
-
+            \begin{equation}
+                \begin{split}
+                    \dot{\theta} & = 1.4142\left[\frac{deg}{s}\right] \\
+                \end{split}
+            \end{equation}
             \subpart{About what unit vector ($\vec{k}^{\;n}_{nb}$) has the instantaneous rotation occurred?}
+            \begin{equation}
+                \begin{split}
+                    \vec{k}^{\;n}_{nb} & =
+                    \begin{bmatrix}
+                        0.43876        \\
+                        0.89159        \\
+                        -      0.11203 \\
+                    \end{bmatrix}
+                \end{split}
+            \end{equation}
         \end{subparts}
         \part{Using the $\mathbf{C}^n_b$ and $\dot{\mathbf{C}}^n_b$ functions from above, compute the angular velocity vector $\vec{\omega}^{\;n}_{nb}$ at time $t = 1$ seconds.}
+        \[\vec{\omega}^{\;n}_{nb}\vert_{(t = 1.0)}  =
+            \begin{bmatrix}
+                1.0806  \\
+                1       \\
+                -1.6829 \\
+            \end{bmatrix} \]
         \begin{subparts}
             \subpart{What is the magnitude (i.e. $\dot{\theta}$,angular speed) of the angular velocity?}
-
+            \begin{equation}
+                \begin{split}
+                    \dot{\theta} & = 2.2361\left[\frac{deg}{s}\right] \\
+                \end{split}
+            \end{equation}
             \subpart{About what unit vector ($\vec{k}^{\;n}_{nb}$) has the instantaneous rotation occurred?}
+            \begin{equation}
+                \begin{split}
+                    \vec{k}^{\;n}_{nb} & =
+                    \begin{bmatrix}
+                        0.6596   \\
+                        0.6596   \\
+                        -0.36034 \\
+                    \end{bmatrix}
+                \end{split}
+            \end{equation}
         \end{subparts}
 
         \part{In practice, direct measurement of the angular velocity vector $\vec{\omega}^{\;n}_{nb}$ can prove challenging, so a finite-difference approach may be taken given two sequential orientations represented by $\mathbf{C}^n_b(t)$ and $\mathbf{C}^n_b(t + \Delta t)$ a small time $\Delta t$ apart. Consider the approximate value of the angular velocity vector $\vec{\omega}^{\;n}_{nb}$ derived by using the finite difference
             \[\dot{\mathbf{C}}^n_b(t) \approx \frac{\mathbf{C}^n_b(t + \Delta t) - \mathbf{C}^n_b(t)}{\Delta t} \]
             at times $t = 0$,$0.5$, and $1$ second. Compare the "analytic" values for $\dot{\theta}$ and $\vec{k}^{\;n}_{nb}$ (found in parts \ref{part@4@2}, \ref{part@4@3}, and \ref{part@4@4}) with your approximations from the finite difference using $\Delta t = 0.1$ seconds. How large are the errors?}
+
+        \solution{%
+            There no errors between the analytical and discrete rotation unit vector ($\vec{k}^{\;n}_{nb}$) because the rotation matrix used to calculate $\vec{k}^{\;n}_{nb}$ is the same for both. However, we see an increase in error through time with angular speed. This is because the discrete angular rates are calculated with a specific time step, unlike the analytical solution.
+
+            \begin{table}[h!]
+                \centering
+                \begin{tabular}{|c|ccc|}
+                    \hline
+                    Time [s]           & $0.0$    & $0.5$    & $1.0$    \\
+                    \hline
+                    $e_{\dot{\theta}}$ & $0.9498$ & $1.3429$ & $1.9585$ \\
+                    \hline
+                \end{tabular}
+            \end{table}
+        }
     \end{parts}
     \clearpage
     \question{Given the geodetic coordinate of the peak of Mt. Everest as Latitude ($L_b$) $27^o\;59'\;16"$ N, Longitude ($\lambda_b$) $86^o\;56'\;40"$ E, and height ($h_b$) 8850 meters (derived by GPS in 1999):}
