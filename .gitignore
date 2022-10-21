@@ -8,3 +8,7 @@
 *.pdf
 *.asv
 *.out
+!llh2xyz.pdf
+!xyz2llh.pdf
+!Q4fcn.pdf
+!Hw_3.pdf

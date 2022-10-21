@@ -481,7 +481,7 @@
         \part{Determine the analytic form of the time-derivative of $\mathbf{C}^n_b$ (i.e. $\dot{\mathbf{C}}^n_b = \frac{d\mathbf{C}^n_b}{dt}$) via a term-by-term differentiation.}
 
         We can use the \textit{Symbolic Math Toolbox} to differentiate the matrix for us very easily. Using \textit{diff} in MATLAB produces
-        \[ \dot{\mathbf{C}}^n_b = \left[\begin{array}{ccc} -\sin\left(t\right) & \sin\left(t^2\right)\cos\left(t\right)+2t\cos\left(t^2\right)\sin\left(t\right) & \cos\left(t^2\right)\cos\left(t\right)-2t\sin\left(t^2\right)\sin\left(t\right)\\ 0 & -2t\sin\left(t^2\right) & -2t\cos\left(t^2\right)\\ -\cos\left(t\right) & 2t\cos\left(t^2\right)\cos\left(t\right)-\sin\left(t^2\right)\sin\left(t\right) & -\cos\left(t^2\right)\sin\left(t\right)-2t\sin\left(t^2\right)\cos\left(t\right) \end{array}\right]\]
+        \[\dot{\mathbf{C}}^n_b = \left[\begin{array}{ccc} -s\left(t\right) & s\left(t^2\right)c\left(t\right)+2t\cdot c\left(t^2\right)s\left(t\right) & c\left(t^2\right)c\left(t\right)-2t\cdot s\left(t^2\right)s\left(t\right)\\ 0 & -2t\cdot s\left(t^2\right) & -2t\cdot c\left(t^2\right)\\ -c\left(t\right) & 2t\cdot c\left(t^2\right)c\left(t\right)-s\left(t^2\right)s\left(t\right) & -c\left(t^2\right)s\left(t\right)-2t\cdot s\left(t^2\right)c\left(t\right) \end{array}\right]\]
 
 
 
@@ -592,6 +592,7 @@
                 \end{split}
             \end{equation}
         \end{subparts}
+        \clearpage
         \part{Using the $\mathbf{C}^n_b$ and $\dot{\mathbf{C}}^n_b$ functions from above, compute the angular velocity vector $\vec{\omega}^{\;n}_{nb}$ at time $t = 1$ seconds.}
         \[\vec{\omega}^{\;n}_{nb}\vert_{(t = 1.0)}  =
             \begin{bmatrix}
@@ -666,14 +667,107 @@
 
             HINT: This should be an interactive transformation (i.e. not closed form).}
 
+        \solution{%
+            The created function is appended at the end of this submission and was tested using the ECEF coordinates produced from part \ref{part@5@1}.
+        }
+
         \part{What is the acceleration due to gravity at the ellipsoid (i.e. at the ellipsoid $h_b = 0$. HINT: This should only be a function of Latitude -- see attached Pages)?}
 
+        \solution{%
+            On page 47 of the appended equation, Groves includes the Somigliana Model. Using the Latitude of the peak of Mt. Everest, we can approximate the acceleration due to gravity at the ellipsoid as
+            \[g_0(L) \approx 9.7803253359\frac{(1 + 0.001931853 \sin^2(L))}{\sqrt{1 - e^2\sin^2(L)}}\]
+            \[g_0(27.99) \approx 9.7917\]
+        }
+        \clearpage
         \part{What is the magnitude of the centrifugal acceleration ($-\tilde{\omega}^{e}_{ie}\,\tilde{\omega}^{e}_{ie}\,\vec{r}^{\;e_{eb}}$) at the ellipsoid and at the peak?}
 
+        \solution{%
+            The centrifugal acceleration, $\mathbf{a}_{ib}^e$ can be calculated as a function of the angular rotational rate about the Earth's axis ($7.292115 \times 10^{-5} \frac{rad}{sec}$) and the position vector from the center of the earth to the body represented in the ECEF coordinate frame. Equation \ref{eq:21} presents the centrifugal acceleration at the peak of Mt. Everest, and Equation \ref{eq:22} presents the centrifugal acceleration at the ellipsoid.
+            \begin{equation}
+                \begin{split}
+                    \mathbf{a}_{ib}^e & = -\tilde{\omega}^{e}_{ie}\,\tilde{\omega}^{e}_{ie}\,\vec{r}^{\;e_{eb}}\\
+                    \mathbf{a}_{ib}^e & = -
+                    \begin{bmatrix}
+                        0             & -7.3e\text{-}5 & 0 \\
+                        7.3e\text{-}5 & 0              & 0 \\
+                        0             & 0              & 0 \\
+                    \end{bmatrix}
+                    \begin{bmatrix}
+                        0             & -7.3e\text{-}5 & 0 \\
+                        7.3e\text{-}5 & 0              & 0 \\
+                        0             & 0              & 0 \\
+                    \end{bmatrix}
+                    \begin{bmatrix}
+                        300858.17  \\
+                        5636146.41 \\
+                        2979462.45 \\
+                    \end{bmatrix}\\
+                    \mathbf{a}_{ib}^e & = 0.030013 \left[\frac{m}{s^2} \right]\\
+                \end{split}
+                \label{eq:21}
+            \end{equation}
+
+            \begin{equation}
+                \begin{split}
+                    \mathbf{a}_{ib}^e & = -\tilde{\omega}^{e}_{ie}\,\tilde{\omega}^{e}_{ie}\,\vec{r}^{\;e_{eb}}\\
+                    \mathbf{a}_{ib}^e & = -
+                    \begin{bmatrix}
+                        0             & -7.3e\text{-}5 & 0 \\
+                        7.3e\text{-}5 & 0              & 0 \\
+                        0             & 0              & 0 \\
+                    \end{bmatrix}
+                    \begin{bmatrix}
+                        0             & -7.3e\text{-}5 & 0 \\
+                        7.3e\text{-}5 & 0              & 0 \\
+                        0             & 0              & 0 \\
+                    \end{bmatrix}
+                    \begin{bmatrix}
+                        300441.6  \\
+                        5628342.6 \\
+                        2975309.3 \\
+                    \end{bmatrix}\\
+                    \mathbf{a}_{ib}^e & = 0.029971 \left[\frac{m}{s^2} \right]\\
+                \end{split}
+                \label{eq:22}
+            \end{equation}
+        }
+
         \part{What is the magnitude of the gravitational attraction at the ellipsoid and at the peak? HINT: See \textbf{attached pages} to compute $\vec{\gamma}^{\;e}_{ib} = \vec{\gamma}^{\;i}_{eb} \vert_{\vec{r}^{\;i}_{ib} = \vec{r}^{\;e}_{eb}}$}
+
+        \solution{%
+        The gravitational attractions can be computed using Equation 2.91 from the appended pages. That equation is listed here.
+        \begin{equation}
+            \begin{split}
+                \gamma^i_{ib} & = -\frac{\mu}{\vert \mathbf{r}^i_{ib} \vert^3} \left\{\mathbf{r}^i_{ib} + \frac{3}{2}J_2 \frac{R_0^2}{\vert \mathbf{r}^i_{ib} \vert^2}
+                \begin{Bmatrix}
+                    \left(1 - 5\left(\frac{\mathbf{r}^i_{ib_z}}{\vert \mathbf{r}^i_{ib} \vert^2}\right)^2\right)\mathbf{r}^i_{ib_x} \\
+                    \left(1 - 5\left(\frac{\mathbf{r}^i_{ib_z}}{\vert \mathbf{r}^i_{ib} \vert^2}\right)^2\right)\mathbf{r}^i_{ib_y} \\
+                    \left(3 - 5\left(\frac{\mathbf{r}^i_{ib_z}}{\vert \mathbf{r}^i_{ib} \vert^2}\right)^2\right)\mathbf{r}^i_{ib_z} \\
+                \end{Bmatrix}
+                \right\}
+            \end{split}
+            \label{}
+        \end{equation}
+        For the peak of Mt. Everest, we get a gravitational attraction of
+        \[\gamma^i_{ib} =
+            \begin{bmatrix}
+                -0.46 \\
+                -8.64 \\
+                -4.58 \\
+            \end{bmatrix} \]
+        and for the ellipsoid (i.e. $h_b = 0$), we get a gravitational attraction of
+        \[\gamma^i_{ib} =
+            \begin{bmatrix}
+                -0.46 \\
+                -8.66 \\
+                -4.60 \\
+            \end{bmatrix} \]
+        }
     \end{parts}
 \end{questions}
 \includepdf[pages={1}]{Q4fcn.pdf}
+\includepdf[pages={1}]{xyz2llh.pdf}
+\includepdf[pages={1}]{llh2xyz.pdf}
 \includepdf[pages={5-9}]{Hw_3.pdf}
 
 \end{document}
