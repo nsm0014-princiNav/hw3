@@ -280,11 +280,23 @@
     \begin{parts}
         \part{Determine the analytic form of the time-derivative of $\mathbf{C}^n_b$ (i.e. $\dot{\mathbf{C}}^n_b = \frac{d\mathbf{C}^n_b}{dt}$) via a term-by-term differentiation.}
 
+        We can use the \textit{Symbolic Math Toolbox} to differentiate the matrix for us very easily. Using \textit{diff} in MATLAB produces
+        \[ \dot{\mathbf{C}}^n_b = \left[\begin{array}{ccc} -\sin\left(t\right) & \sin\left(t^2\right)\cos\left(t\right)+2t\cos\left(t^2\right)\sin\left(t\right) & \cos\left(t^2\right)\cos\left(t\right)-2t\sin\left(t^2\right)\sin\left(t\right)\\ 0 & -2t\sin\left(t^2\right) & -2t\cos\left(t^2\right)\\ -\cos\left(t\right) & 2t\cos\left(t^2\right)\cos\left(t\right)-\sin\left(t^2\right)\sin\left(t\right) & -\cos\left(t^2\right)\sin\left(t\right)-2t\sin\left(t^2\right)\cos\left(t\right) \end{array}\right]\]
+
 
 
         \part{Develop MATLAB functions which accept $t$ (i.e time) as a numerical input and return $\mathbf{C}^n_b$ and $\dot{\mathbf{C}}^n_b$, respectively, as numerical outputs.}
 
+        \solution{%
+            The created function to appended to end of this submission.
+        }
+
         \part{Using the $\mathbf{C}^n_b$ and $\dot{\mathbf{C}}^n_b$ functions from above, compute the angular velocity vector $\vec{\omega}^{\;n}_{nb}$ at time $t = 0$ seconds. (HINT: You might want to compute $\tilde{\omega}^{n}_{nb}$)}
+
+        \solution{%
+            For the following parts we can solve for $\vec{\omega}^{\;n}_{nb}$ using the following equation.
+            \[\dot{\mathbf{C}}^n_b(\mathbf{C}^n_b)^{-1} = \vec{\omega}^{\;n}_{nb} \]
+        }
         \begin{subparts}
             \subpart{What is the magnitude (i.e. $\dot{\theta}$,angular speed) of the angular velocity?}
 
