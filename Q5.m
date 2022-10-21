@@ -28,3 +28,5 @@ gamma_ib_i_second_term = r_eb_e
 gamma_ib_i_third_term = 1.5*J2*(R0^2/mag_r_eb_e^2)
 gamma_ib_i_fourth_term = [(1 - 5*(r_eb_e(3)/mag_r_eb_e)^2)*r_eb_e(1);(1 - 5*(r_eb_e(3)/mag_r_eb_e)^2)*r_eb_e(2);(3 - 5*(r_eb_e(3)/mag_r_eb_e)^2)*r_eb_e(3)]
 gamma_ib_i = gamma_ib_i_first_term*(gamma_ib_i_second_term + gamma_ib_i_third_term*gamma_ib_i_fourth_term)
+
+mag_gamma_ib_i = norm(gamma_ib_i)
