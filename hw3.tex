@@ -288,19 +288,82 @@
         \part{Develop MATLAB functions which accept $t$ (i.e time) as a numerical input and return $\mathbf{C}^n_b$ and $\dot{\mathbf{C}}^n_b$, respectively, as numerical outputs.}
 
         \solution{%
-            The created function to appended to end of this submission.
+            The created function is appended at the end of this submission.
         }
 
         \part{Using the $\mathbf{C}^n_b$ and $\dot{\mathbf{C}}^n_b$ functions from above, compute the angular velocity vector $\vec{\omega}^{\;n}_{nb}$ at time $t = 0$ seconds. (HINT: You might want to compute $\tilde{\omega}^{n}_{nb}$)}
 
         \solution{%
             For the following parts we can solve for $\vec{\omega}^{\;n}_{nb}$ using the following equation.
-            \[\dot{\mathbf{C}}^n_b(\mathbf{C}^n_b)^{-1} = \vec{\omega}^{\;n}_{nb} \]
+            \[\dot{\mathbf{C}}^n_b(\mathbf{C}^n_b)^{-1} = \tilde{\omega}^{\;n}_{nb} \]
+            If we understand that $\tilde{\omega}^{\;n}_{nb}$ is just the skew-symmetric form of $\vec{\omega}^{\;n}_{nb}$, we can go between forms quite easily with Equation \ref{eq:10}.
+            \begin{equation}
+                \begin{split}
+                    \tilde{\omega}^{\;n}_{nb} & =
+                    \begin{bmatrix}
+                        0         & -\omega_z & \omega_y  \\
+                        \omega_z  & 0         & -\omega_x \\
+                        -\omega_y & \omega_x  & 0         \\
+                    \end{bmatrix}\\
+                    \vec{\omega}^{\;n}_{nb} & =
+                    \begin{bmatrix}
+                        \omega_x \\
+                        \omega_y \\
+                        \omega_z \\
+                    \end{bmatrix}\\
+                \end{split}
+                \label{eq:10}
+            \end{equation}
+
+            Using the aforementioned equations, we find that $\vec{\omega}^{\;n}_{nb}$ at time $t = 0$ seconds is
+            \[\vec{\omega}^{\;n}_{nb}\vert_{(t = 0)}  =
+                \begin{bmatrix}
+                    0 \\
+                    1 \\
+                    0 \\
+                \end{bmatrix} \]
         }
         \begin{subparts}
             \subpart{What is the magnitude (i.e. $\dot{\theta}$,angular speed) of the angular velocity?}
 
+            \solution{%
+                We can find the magnitude of $\vec{\omega}^{\;n}_{nb}\vert_{(t = 0)}$ by using \textit{norm} in MATLAB.
+                \begin{equation}
+                    \begin{split}
+                        norm(\vec{\omega}^{\;n}_{nb}\vert_{(t = 0)}) & = 1
+                    \end{split}
+                    \label{eq:11}
+                \end{equation}
+            }
+
             \subpart{About what unit vector ($\vec{k}^{\;n}_{nb}$) has the instantaneous rotation occurred?}
+
+            \solution{%
+                We can find the unit vector, $\vec{k}^{\;n}_{nb}$, by first finding $\theta$. This can be done by using $\mathbf{C}^n_b$ evaluated at time $t = 0$ seconds.
+
+                \begin{equation}
+                    \begin{split}
+                        \theta & = \cos^{-1}\left(\frac{trace(\mathbf{C}^n_b) - 1}{2} \right)\\
+                        \theta & = 0^o \\
+                    \end{split}
+                    \label{eq:12}
+                \end{equation}
+
+                Then, using $\theta$ we can solve for the unit vector that the body is rotating about.
+                \begin{equation}
+                    \begin{split}
+                        \vec{k}^{\;n}_{nb} & =
+                        \begin{bmatrix}
+                            \mathbf{C}^n_b(3,2) - \mathbf{C}^n_b(2,3) \\
+                            \mathbf{C}^n_b(1,3) - \mathbf{C}^n_b(3,1) \\
+                            \mathbf{C}^n_b(2,1) - \mathbf{C}^n_b(1,2) \\
+                        \end{bmatrix}\frac{1}{2\sin\theta}
+                    \end{split}
+                    \label{eq:13}
+                \end{equation}
+
+                When doing this for time $t = 0$ seconds, we see that $\theta$ is 0, thus giving us an undefined unit vector. This is to be expected because the body did not have any initial angular velocity.
+            }
         \end{subparts}
 
         \part{Using the $\mathbf{C}^n_b$ and $\dot{\mathbf{C}}^n_b$ functions from above, compute the angular velocity vector $\vec{\omega}^{\;n}_{nb}$ at time $t = 0.5$ seconds.}
@@ -341,6 +404,6 @@
         \part{What is the magnitude of the gravitational attraction at the ellipsoid and at the peak? HINT: See \textbf{attached pages} to compute $\vec{\gamma}^{\;e}_{ib} = \vec{\gamma}^{\;i}_{eb} \vert_{\vec{r}^{\;i}_{ib} = \vec{r}^{\;e}_{eb}}$}
     \end{parts}
 \end{questions}
-
+\includepdf[pages={1}]{Q4fcn.pdf}
 \includepdf[pages={5-9}]{Hw_3.pdf}
 \end{document}
