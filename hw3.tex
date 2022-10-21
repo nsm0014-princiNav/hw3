@@ -8,9 +8,11 @@
 \usepackage{hyperref}
 \setcounter{MaxMatrixCols}{20}
 \usepackage[lmargin=71pt, tmargin=1.2in]{geometry}  %For centering solution box
+
 \lhead{Principles of Navigation}
 \rhead{Noah Miller}
 \thispagestyle{empty}   %For removing header/footer from page 1
+
 
 \begin{document}
 
@@ -641,8 +643,22 @@
     \begin{parts}
         \part{Develop a MATLAB function \[\text{function}\;\; r^e_{eb} = \text{llh2xyz}(L_b,\lambda_b,h_b) \]
         to convert from geodetic curvilinear Latitude, Longitude, and height to ECEF rectangular $x$,$y$, and $z$ coordinates (Please use SI units). Attach a printout of your function.}
+
+        \solution{%
+            The created function is appended at the end of this submission.
+        }
         \begin{subparts}
             \subpart{Test your llh2xyz function using coordinates of the peak of Mt. Everest. What is $\vec{r}^{\;e}_{eb}$?}
+
+            \solution{%
+                Using the custom function to find $\vec{r}^{\;e}_{eb}$ we get
+                \[\vec{r}^{\;e}_{eb} =
+                    \begin{bmatrix}
+                        300858.17  \\
+                        5636146.41 \\
+                        2979462.45 \\
+                    \end{bmatrix}\]
+            }
         \end{subparts}
 
         \part{Develop a MATLAB function \[\text{function}\;\;\left[L_b,\lambda_b,h_b\right]  = \text{xyz2llh}(r^e_{eb}) \]
@@ -659,4 +675,5 @@
 \end{questions}
 \includepdf[pages={1}]{Q4fcn.pdf}
 \includepdf[pages={5-9}]{Hw_3.pdf}
+
 \end{document}
